@@ -6,7 +6,7 @@
 
 var sophis = sophis || {};
 
-var increment = 0.1;
+sophis.increment = 0.1;
 var keyCombo = 'udar';
 var blackListedSites = ['vine.com'];
 
@@ -120,7 +120,7 @@ sophis.VideoControl.killAll = function() {
  */
 sophis.VideoControl.prototype.createDom = function() {
   var container = document.createElement('div');
-  var shadow = container.createShadowRoot();
+  var shadow = container.attachShadow({mode: 'open'});
   var bg = document.createElement('div');
   var speedIndicator = document.createElement('span');
   var minusButton = document.createElement('button');
@@ -186,14 +186,14 @@ sophis.VideoControl.prototype.enterDocument = function() {
  * Increases the current video's playback rate.
  */
 sophis.VideoControl.prototype.decreaseSpeed = function () {
-  this.videoEl_.playbackRate -= increment;
+  this.videoEl_.playbackRate -= sophis.increment;
 };
 
 /**
  * Decreases the current video's playback rate.
  */
 sophis.VideoControl.prototype.increaseSpeed = function () {
-  this.videoEl_.playbackRate += increment;
+  this.videoEl_.playbackRate += sophis.increment;
 };
 
 /**
